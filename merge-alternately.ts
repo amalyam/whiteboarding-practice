@@ -13,7 +13,7 @@ function mergeAlternately(word1: string, word2: string): string {
     
     
     
-    return mergedArr.flat().join("");
+    return mergedArr.join("");
     };
    
    console.log(mergeAlternately("abc", "pqr"));
