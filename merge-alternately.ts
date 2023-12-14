@@ -4,23 +4,16 @@ function mergeAlternately(word1: string, word2: string): string {
    
    let mergedArr = [];
    
-   for (let i = 0; i < wordArr1.length; i++) {
-       if (wordArr2[i] === undefined) {
-           mergedArr.push(wordArr1.slice(i));
-           break;
-       } else {
-           mergedArr.push(wordArr1[i]);
-           if (i === wordArr1.length - 1) {
-           mergedArr.push(wordArr2.slice(i));
-           break;
-       } else {
-           mergedArr.push(wordArr2[i]);
+   for (let i = 0; i < wordArr1.length + wordArr2.length; i++) {
+       if (wordArr1[i]) {
+       mergedArr.push(wordArr1[i]);
        }
+           if (wordArr2[i]) {
+       mergedArr.push(wordArr2[i]);
        }
-   
    }
    
-   return mergedArr.flat().join("");
+   return mergedArr.join("");
    };
    
    console.log(mergeAlternately("abc", "pqr"));
