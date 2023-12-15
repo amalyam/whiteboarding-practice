@@ -1,1 +1,1 @@
-# whiteboarding-practice
+Whiteboarding practice problems and solutions.
