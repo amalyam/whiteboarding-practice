@@ -20,9 +20,24 @@ pairElement("CTCTA") should return [["C","G"],["T","A"],["C","G"],["T","A"],["A"
 
 */
 
-function pairElement(str: string) {
-
+function pairElement(str: string): [string, string][] {
+    
+    return str.split("").reduce((returnArray: [string,string][], currentLetter: string) => {
+        if (currentLetter === "A") {
+            returnArray.push(["A","T"]);
+        } else if (currentLetter === "T") {
+            returnArray.push(["T","A"]);
+        } else if (currentLetter === "C") {
+            returnArray.push(["C","G"]);
+        } else {
+            returnArray.push(["G","C"]);
+        }
+        return returnArray;
+    }, []);
 }
 
 
-pairElement("GCG");
+console.log(pairElement("GCG")); //should return [["G", "C"], ["C","G"], ["G", "C"]]
+console.log(pairElement("ATCGA")); // should return [["A","T"],["T","A"],["C","G"],["G","C"],["A","T"]].
+console.log(pairElement("TTGAG")); // should return [["T","A"],["T","A"],["G","C"],["A","T"],["G","C"]].
+console.log(pairElement("CTCTA")); // should return [["C","G"],["T","A"],["C","G"],["T","A"],["A","T"]].
