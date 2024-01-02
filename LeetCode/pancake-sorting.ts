@@ -57,6 +57,10 @@ function pancakeSort(arr: number[]): number[] {
   // find the index of the largest value
   const maxValIndex = arr.indexOf(maxVal);
 
+  // check if the maxValue is already in the correct position
+  if (maxValIndex === divider - 1)
+    return pancakeSort(arr.slice(0, divider - 1));
+
   // perform a pancake flip:
   // to bring the largest number to the front,
   // reverse up to and including maxValIndex
