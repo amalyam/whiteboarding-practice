@@ -58,24 +58,25 @@ function pancakeSort(arr: number[]): number[] {
   const maxValIndex = arr.indexOf(maxVal);
 
   // check if the maxValue is already in the correct position
-  if (maxValIndex === divider - 1)
+  if (maxValIndex === divider - 1) {
     return pancakeSort(arr.slice(0, divider - 1));
+  } else {
+    // perform a pancake flip:
+    // to bring the largest number to the front,
+    // reverse up to and including maxValIndex
+    arr = arr
+      .slice(0, maxValIndex + 1)
+      .reverse()
+      .concat(arr.slice(maxValIndex + 1));
 
-  // perform a pancake flip:
-  // to bring the largest number to the front,
-  // reverse up to and including maxValIndex
-  arr = arr
-    .slice(0, maxValIndex + 1)
-    .reverse()
-    .concat(arr.slice(maxValIndex + 1));
+    // sort the largest number into its correct place
+    // by reversing again up to the divider
+    arr = arr.slice(0, divider).reverse();
 
-  // sort the largest number into its correct place
-  // by reversing again up to the divider
-  arr = arr.slice(0, divider).reverse();
-
-  return [maxValIndex + 1, divider].concat(
-    pancakeSort(arr.slice(0, divider - 1))
-  );
+    return [maxValIndex + 1, divider].concat(
+      pancakeSort(arr.slice(0, divider - 1))
+    );
+  }
 }
 
 console.log(pancakeSort([3, 2, 4, 1])); //[4,2,4,3]
