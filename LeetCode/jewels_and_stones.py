@@ -29,3 +29,8 @@ class Solution:
             total += jewels.count(stone)
         
         return total
+
+# Your runtime beats 62.36 % of python3 submissions.
+# Your memory usage beats 54.76 % of python3 submissions.
+
+# try again with a dictionary

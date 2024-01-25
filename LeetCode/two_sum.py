@@ -32,6 +32,8 @@
  
 # Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 
+# ****try again wth a dictionary*****
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         # nums_dict = {index: value for index, value in enumerate(nums)}
@@ -39,6 +41,9 @@ class Solution:
         for i in range(0, len(nums)):
             if (target - nums[i]) in nums[i+ 1:]:
                 return [i, nums.index(target - nums[i], i + 1)]
+
+# Your runtime beats 40.42 % of python3 submissions.
+# Your memory usage beats 81.66 % of python3 submissions.
             
             
 # brute force solutions O(n^2)
@@ -49,3 +54,6 @@ class Solution:
 #             for j in range (0, len(nums)):
 #                 if nums[i] + nums[j] == target and i != j:
 #                     return [i, j]
+
+# Your runtime beats 9.37 % of python3 submissions.
+# Your memory usage beats 81.66 % of python3 submissions.
