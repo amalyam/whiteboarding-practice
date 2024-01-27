@@ -8,25 +8,13 @@
 # so you should return [-20, 40].
 
 def track_robot(instructions):
-    location = [0,0]
-    if not instructions:
-        return location
+    totals = {'left': 0, 'right': 0, 'up': 0, 'down': 0}
     
-    for instruction in instructions:
-        space = instruction.index(" ")
-        direction = instruction[:space]
-        distance = int(instruction[space+1:])
-        if direction == "left":
-            location[0] -= distance
-        if direction == "right":
-            location[0] += distance
-        if direction == "up":
-            location[1] += distance
-        if direction == "down":
-            location[1] -= distance
+    for movement in instructions:
+        movement = movement.split()
+        totals[movement[0]] += int(movement[1])
     
-    return location
-
+    return [totals['right'] - totals['left'], totals['up'] - totals['down']]
 
 print(track_robot(["right 10", "up 50", "left 30", "down 10"]))
 # Prints [-20, 40]
